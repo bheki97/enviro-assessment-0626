@@ -1,0 +1,30 @@
+[
+  {
+
+    "investmentPortfolio": null,
+    "balance": 25000.00,
+    "productType": "BOND",
+    "createdDate": "2026-02-11T12:00:00"
+  },
+  {
+
+    "investmentPortfolio": null,
+    "balance": 10000.00,
+    "productType": "CASH",
+    "createdDate": "2026-02-12T13:00:00"
+  },
+  {
+
+    "investmentPortfolio": null,
+    "balance": 7000.00,
+    "productType": "EDUCATION",
+    "createdDate": "2026-02-13T14:00:00"
+  },
+  {
+
+    "investmentPortfolio": null,
+    "balance": 1500.00,
+    "productType": "RETIREMENT",
+    "createdDate": "2026-02-14T15:00:00"
+  }
+]

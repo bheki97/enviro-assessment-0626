@@ -1,0 +1,16 @@
+[
+  {
+
+    "investmentPortfolio": null,
+    "balance": 15000.50,
+    "productType": "RETIREMENT",
+    "createdDate": "2026-06-02T09:00:00"
+  },
+  {
+
+    "investmentPortfolio": null,
+    "balance": 5000.00,
+    "productType": "CASH",
+    "createdDate": "2026-06-03T11:20:00"
+  }
+]

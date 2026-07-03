@@ -1,0 +1,199 @@
+.product-list {
+  display: grid;
+  gap: 12px;
+}
+
+.product-card {
+  border: 1px solid #d8f0df;
+  border-radius: 14px;
+  background: #fcfffc;
+  overflow: hidden;
+}
+
+.product-toggle {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.product-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-top h4 {
+  margin: 0;
+  color: #1c4f2e;
+}
+
+.balance {
+  font-weight: 700;
+  color: #1f6f3f;
+}
+
+.product-details {
+  padding: 0 16px 16px;
+  border-top: 1px solid #e8f4ea;
+}
+
+.product-meta {
+  margin: 10px 0 0;
+  color: #5f7d63;
+}
+
+.product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.action-button {
+  border: none;
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 6px 16px rgba(23, 75, 45, 0.12);
+}
+
+.action-button:hover {
+  transform: translateY(-1px);
+}
+
+.action-button.primary {
+  background: linear-gradient(135deg, #2f8f4d, #1f6f3f);
+  color: white;
+}
+
+.action-button.secondary {
+  background: #f1f8f3;
+  color: #174b2d;
+  box-shadow: inset 0 0 0 1px rgba(47, 143, 77, 0.08);
+}
+
+.withdrawal-list {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #f6fdf7 0%, #eef8f1 100%);
+  border: 1px solid #dff4e5;
+}
+
+.date-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #32533d;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.date-filter .filter-input {
+  min-width: 160px;
+}
+
+.filter-input {
+  min-width: 150px;
+  border: 1px solid #cfead8;
+  border-radius: 12px;
+  padding: 9px 11px;
+  background: linear-gradient(135deg, #ffffff 0%, #f9fdf9 100%);
+  color: #174b2d;
+  font-size: 0.95rem;
+  box-shadow: inset 0 1px 2px rgba(23, 75, 45, 0.04), 0 6px 16px rgba(23, 75, 45, 0.06);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.filter-input:hover {
+  transform: translateY(-1px);
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: #2f8f4d;
+  box-shadow: 0 0 0 3px rgba(47, 143, 77, 0.16), 0 8px 18px rgba(23, 75, 45, 0.08);
+}
+
+.filter-input select {
+  background: transparent;
+}
+
+.filter-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(34%) sepia(31%) saturate(607%) hue-rotate(86deg) brightness(90%) contrast(92%);
+}
+
+.withdrawal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fdf9;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.withdrawal-item strong {
+  color: #174b2d;
+}
+
+.withdrawal-item p {
+  margin: 2px 0 0;
+  color: #5f7d63;
+  text-transform: capitalize;
+}
+
+.withdrawal-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-pending {
+  background: #fff4d6;
+  color: #9b6a00;
+}
+
+.status-processed {
+  background: #e8f7ee;
+  color: #1f6f3f;
+}
+
+.status-cancelled {
+  background: #fdecec;
+  color: #b42318;
+}
+
+.empty-state {
+  margin-top: 10px;
+  color: #5f7d63;
+}

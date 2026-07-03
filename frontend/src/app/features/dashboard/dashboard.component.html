@@ -1,0 +1,56 @@
+<main class="dashboard-page">
+  <section class="dashboard-card">
+    <header class="dashboard-header">
+      <div>
+        <p class="eyebrow">Enviro365</p>
+        <h1>Investment Portfolio Dashboard</h1>
+        <p class="portfolio-intro">Viewing the portfolio for {{ portfolio.firstName }} {{ portfolio.lastName }} ({{ portfolio.email }})</p>
+      </div>
+      <div class="dashboard-actions">
+        <button class="logout-button" type="button" (click)="onLogout()">Logout</button>
+        <div class="avatar">{{ portfolio.firstName[0] }}{{ portfolio.lastName[0] }}</div>
+      </div>
+    </header>
+
+    <section class="profile-card">
+      <div>
+        <p class="profile-label">Portfolio owner</p>
+        <h2>{{ portfolio.firstName }} {{ portfolio.lastName }}</h2>
+        <p class="profile-meta">Age: {{ portfolio.age }} · Joined: {{ portfolio.createdDate | date:'mediumDate' }}</p>
+      </div>
+      <div class="profile-stats">
+        <div>
+          <p>Total balance</p>
+          <strong>{{ totalBalance | currencyDisplay }}</strong>
+        </div>
+        <div>
+          <p>Pending withdrawals</p>
+          <strong>{{ pendingWithdrawals | currencyDisplay }}</strong>
+        </div>
+        <div>
+          <p>Processed withdrawals</p>
+          <strong>{{ processedWithdrawals | currencyDisplay }}</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="details-section">
+      <h3>Products in this portfolio</h3>
+      <div class="feedback-message" [ngClass]="feedbackTone" *ngIf="feedbackMessage" role="status" aria-live="polite">{{ feedbackMessage }}</div>
+      <app-product-list [products]="portfolio.products" (withdraw)="openWithdrawalModal($event)" (downloadCsv)="downloadWithdrawalsCsv($event)"></app-product-list>
+    </section>
+  </section>
+
+  <div class="modal-backdrop" *ngIf="isWithdrawalModalOpen">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="withdrawal-modal-title">
+      <h4 id="withdrawal-modal-title">Submit a withdrawal</h4>
+      <p class="modal-copy">Enter the amount you would like to withdraw from this product.</p>
+      <label class="modal-label" for="withdrawal-amount">Amount</label>
+      <input id="withdrawal-amount" class="modal-input" type="number" min="1" step="0.01" name="withdrawalAmount" [(ngModel)]="withdrawalAmount" placeholder="0.00" />
+      <div class="modal-actions">
+        <button class="action-button secondary" type="button" (click)="closeWithdrawalModal()">Cancel</button>
+        <button class="action-button primary" type="button" (click)="completeWithdrawal()">Complete</button>
+      </div>
+    </div>
+  </div>
+</main>

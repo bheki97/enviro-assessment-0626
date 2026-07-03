@@ -1,0 +1,62 @@
+<div class="product-list">
+  <article class="product-card" *ngFor="let product of products">
+    <button class="product-toggle" type="button" (click)="toggleProduct(product.id)">
+      <div class="product-top">
+        <div>
+          <h4>{{ product.productType}}</h4>
+          <p class="product-meta">{{ product.balance | currencyDisplay }}</p>
+        </div>
+        <span class="balance">{{ product.balance | currencyDisplay }}</span>
+      </div>
+    </button>
+
+    <div class="product-details" *ngIf="selectedProductId === product.id">
+      <p class="product-meta">Current balance: {{ product.balance | currencyDisplay }}</p>
+      <p class="product-meta">Withdrawal notices: {{ product.withdrawalNotices.length }}</p>
+
+      <div class="product-actions">
+        <button class="action-button primary" type="button" (click)="onWithdraw(product.id)">Withdraw</button>
+        <button class="action-button secondary" type="button" (click)="onDownloadCsv(product.id)">Download CSV</button>
+      </div>
+
+      <div class="withdrawal-list" *ngIf="product.withdrawalNotices.length; else noWithdrawals">
+        <h5>Withdrawal activity</h5>
+        <div class="filter-row">
+          <select class="filter-input" [ngModel]="getFilters(product.id).status" (ngModelChange)="getFilters(product.id).status = $event">
+            <option [ngValue]="''">All statuses</option>
+            <option [ngValue]="0">Pending</option>
+            <option [ngValue]="1">Processed</option>
+            <option [ngValue]="2">Cancelled</option>
+          </select>
+
+          <label class="date-filter">
+            <span>From</span>
+            <input class="filter-input" type="date" [ngModel]="getFilters(product.id).createdDate" (ngModelChange)="getFilters(product.id).createdDate = $event" aria-label="From date" />
+          </label>
+
+          <label class="date-filter">
+            <span>To</span>
+            <input class="filter-input" type="date" [ngModel]="getFilters(product.id).processedDate" (ngModelChange)="getFilters(product.id).processedDate = $event" aria-label="To date" />
+          </label>
+
+          <button class="action-button secondary" type="button" (click)="resetFilters(product.id)">Reset</button>
+        </div>
+
+        <div class="withdrawal-item" *ngFor="let notice of getFilteredWithdrawals(product)">
+          <div>
+            <strong>{{ notice.amount | currencyDisplay }}</strong>
+            <p>{{ getStatusLabel(notice.status) }}</p>
+          </div>
+          <div class="withdrawal-meta">
+            <span class="status-badge" [ngClass]="getStatusClass(notice.status)">{{ getStatusLabel(notice.status) }}</span>
+            <span>{{ notice.createdDate | date:'mediumDate' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noWithdrawals>
+        <p class="empty-state">No withdrawals have been submitted for this product yet.</p>
+      </ng-template>
+    </div>
+  </article>
+</div>

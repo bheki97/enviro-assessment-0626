@@ -1,0 +1,43 @@
+<main class="login-page">
+  <section class="login-card" aria-labelledby="login-title">
+    <div class="brand">
+      <span class="brand-badge">🌿</span>
+      <div>
+        <p class="brand-name">Enviro365</p>
+        <p class="brand-subtitle">Investment & Withdrawal Portal</p>
+      </div>
+    </div>
+
+    <h1 id="login-title">Access your account</h1>
+    <p class="subtitle">Enter your email to review holdings, process withdrawals, and manage investment activity.</p>
+
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <label for="username">Email address</label>
+      <input
+        id="username"
+        name="username"
+        type="email"
+        [(ngModel)]="username"
+        required
+        email
+        placeholder="Enter your email"
+      />
+
+      <p class="validation-message" *ngIf="submitted && !isValidEmail(username)">
+        Please enter a valid email address to continue.
+      </p>
+
+      <button type="submit" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Signing in...' : 'Log in' }}
+      </button>
+    </form>
+
+    <p class="message" *ngIf="feedbackMessage">
+      {{ feedbackMessage }}
+    </p>
+
+    <p class="message" *ngIf="submitted && isValidEmail(username) && !feedbackMessage && !isSubmitting">
+      Welcome, {{ username.trim() }}. Your investment workspace is ready.
+    </p>
+  </section>
+</main>

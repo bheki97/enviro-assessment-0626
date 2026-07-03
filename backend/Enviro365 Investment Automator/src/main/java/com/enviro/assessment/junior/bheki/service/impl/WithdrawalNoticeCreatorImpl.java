@@ -12,6 +12,7 @@ import com.enviro.assessment.junior.bheki.repository.WithdrawalNoticeRepository;
 import com.enviro.assessment.junior.bheki.service.WithdrawalEligibility;
 import com.enviro.assessment.junior.bheki.service.WithdrawalNoticeCreator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -25,7 +26,8 @@ public class WithdrawalNoticeCreatorImpl implements WithdrawalNoticeCreator {
     private final WithdrawalNoticeRepository withdrawalNoticeRepository;
     private final ProductRepository productRepository;
     private final WithdrawalNoticeMapper withdrawalNoticeMapper;
-
+    @Value("${log.msg.product}")
+    private String logMsg;
 
     @Override
     public WithdrawalNoticeResponse createWithdrawalNotice(WithdrawalNoticeRequest request) {

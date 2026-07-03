@@ -4,14 +4,18 @@ import com.enviro.assessment.junior.bheki.entity.Product;
 import com.enviro.assessment.junior.bheki.enumerate.ProductType;
 import com.enviro.assessment.junior.bheki.exception.ApiException;
 import com.enviro.assessment.junior.bheki.service.WithdrawalEligibility;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ClassicalWithdrawalEligibility implements WithdrawalEligibility {
 
+    @Value("${log.msg.product}")
+    private String logMsg;
 
     @Override
     public boolean isEligible(Product product, double amount) {
+//        logMsg = logMsg.concat("(").concat(product.getId()).concat(")");
 
         double balance = product.getBalance();
         if(balance <=amount) {

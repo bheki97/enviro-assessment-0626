@@ -8,6 +8,7 @@ import com.enviro.assessment.junior.bheki.service.WithdrawalStatementsCSVGenerat
 import com.enviro.assessment.junior.bheki.util.WithdrawalNoticeFilter;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.PrintWriter;
@@ -18,6 +19,9 @@ import java.util.List;
 public class WithdrawalStatementsCSVGeneratorImpl implements WithdrawalStatementsCSVGenerator {
 
     private final WithdrawalNoticeRepository withdrawalNoticeRepository;
+    @Value("${log.msg.product}")
+    private String logMsg;
+
     @Override
     public void generateWithdrawalStatementsCSV(WithdrawalNoticeFilterDto withdrawalNoticeFilterDto,
                                                 HttpServletResponse response) {

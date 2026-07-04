@@ -6,7 +6,6 @@ The application automates the withdrawal notice process by enabling investors to
 The system enforces business validation rules to ensure withdrawals are processed correctly while providing a clean, user-friendly interface and reliable backend services.
 
 ## Objectives
-Objectives
 
 - Provide investors with access to their investment portfolios.
 - Allow submission of withdrawal notices with automatic balance validation.
